@@ -2,6 +2,7 @@
 
 import {
   Box,
+  CircularProgress,
   List,
   ListItem,
   ListItemText,
@@ -33,27 +34,25 @@ export default function HomePage({
     );
   }
 
-  if (!data) {
-    return (
-      <Typography variant="h1" component="h1">
-        Loading...
-      </Typography>
-    );
-  }
-
   return (
     <Box display="flex" flexDirection="column" gap={2}>
       <SearchBar defaultValue={searchParams.query ?? ""} />
       <Paper>
-        <List>
-          {[...new Array(10)].map(() =>
-            data.map((article) => (
-              <ListItem key={article.id}>
-                <ListItemText primary={article.title} />
-              </ListItem>
-            ))
-          )}
-        </List>
+        {data ? (
+          <List>
+            {[...new Array(10)].map(() =>
+              data.map((article) => (
+                <ListItem key={article.id}>
+                  <ListItemText primary={article.title} />
+                </ListItem>
+              ))
+            )}
+          </List>
+        ) : (
+          <Box p={2} width="100%" marginX="auto" textAlign="center">
+            <CircularProgress />
+          </Box>
+        )}
       </Paper>
     </Box>
   );
