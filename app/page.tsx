@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Box,
-  CircularProgress,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress, Paper, Typography } from "@mui/material";
 import { ArticleIndex, getArticleIndex } from "@/lib/article";
 import SearchBar from "@/components/SearchBar";
+import ArticleList from "@/components/ArticleList";
 import swr from "swr";
 
 export default function HomePage({
@@ -39,15 +32,7 @@ export default function HomePage({
       <SearchBar defaultValue={searchParams.query ?? ""} />
       <Paper>
         {data ? (
-          <List>
-            {[...new Array(10)].map(() =>
-              data.map((article) => (
-                <ListItem key={article.id}>
-                  <ListItemText primary={article.title} />
-                </ListItem>
-              ))
-            )}
-          </List>
+          <ArticleList articleIndex={data} />
         ) : (
           <Box p={2} width="100%" marginX="auto" textAlign="center">
             <CircularProgress />

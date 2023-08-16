@@ -37,7 +37,7 @@ export async function getArticleIndex(
   return [
     {
       title: "title1" + query,
-      created_at: "2023-01-23T45:67:89+09:00",
+      created_at: "2023-01-23T12:34:56+09:00",
       id: "c686397e4a0f4f11683a",
       tags: [{ name: "tag1" }, { name: "tag2" }],
       user: {
@@ -48,7 +48,7 @@ export async function getArticleIndex(
     },
     {
       title: "title2" + query,
-      created_at: "2023-01-23T45:67:89+09:00",
+      created_at: "2023-01-24T12:34:56+09:00",
       id: "c686397e4a0f4f11683b",
       tags: [{ name: "tag1" }, { name: "tag3" }],
       user: {
@@ -59,7 +59,7 @@ export async function getArticleIndex(
     },
     {
       title: "title3" + query,
-      created_at: "2023-01-23T45:67:89+09:00",
+      created_at: "2023-01-25T12:34:56+09:00",
       id: "c686397e4a0f4f11683c",
       tags: [{ name: "tag1" }, { name: "tag4" }],
       user: {
