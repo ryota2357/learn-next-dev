@@ -31,7 +31,13 @@ export default function RootLayout({
             <RegisterApiTokenButton color="inherit" />
           </Toolbar>
         </ScrollHideAppBar>
-        <Container>{children}</Container>
+        <Container
+          sx={{
+            mt: 8,
+          }}
+        >
+          {children}
+        </Container>
       </body>
     </html>
   );
