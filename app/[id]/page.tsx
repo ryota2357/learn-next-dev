@@ -2,12 +2,13 @@
 
 import { Box, Paper, Typography } from "@mui/material";
 import { getArticleDetail } from "@/lib/article";
+import { useToken } from "@/context/TokenProvider";
 import swr from "swr";
 
 export default function IdPage({ params }: { params: { id: string } }) {
-  // Context なり Recoil なりで Token を取得する
-  const token = "dummy-token";
-  const fetcher = (query: string) => getArticleDetail(token, query);
+  // TODO: impl the behaviour of token == undefined
+  const [token, _] = useToken();
+  const fetcher = (query: string) => getArticleDetail(token ?? "none", query);
 
   const { data, error } = swr(params.id, fetcher);
 

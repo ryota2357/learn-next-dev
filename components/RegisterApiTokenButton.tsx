@@ -11,13 +11,14 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
+import { useToken } from "@/context/TokenProvider";
 
 type Props = {
   color?: ButtonProps["color"];
 };
 
 export default function RegisterApiTokenButton({ color }: Props) {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useToken();
   const [input, setInput] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
 
