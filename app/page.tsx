@@ -1,7 +1,15 @@
 "use client";
 
-import { List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
 import { ArticleIndex, getArticleIndex } from "@/lib/article";
+import SearchBar from "@/components/SearchBar";
 import swr from "swr";
 
 export default function HomePage({
@@ -34,10 +42,8 @@ export default function HomePage({
   }
 
   return (
-    <>
-      <Typography variant="h1" component="h1">
-        Search: {searchParams.query ?? "undefined"}
-      </Typography>
+    <Box display="flex" flexDirection="column" gap={2}>
+      <SearchBar defaultValue={searchParams.query ?? ""} />
       <Paper>
         <List>
           {[...new Array(10)].map(() =>
@@ -49,6 +55,6 @@ export default function HomePage({
           )}
         </List>
       </Paper>
-    </>
+    </Box>
   );
 }

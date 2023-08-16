@@ -33,7 +33,7 @@ export default function RootLayout({
         </ScrollHideAppBar>
         <Container
           sx={{
-            mt: 8,
+            mt: 9, // NOTE: Push down the content to avoid the app bar
           }}
         >
           {children}
