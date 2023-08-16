@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Container, CssBaseline } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "タイトル",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="jp">
-      <body>{children}</body>
+      <CssBaseline />
+      <body>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 }
