@@ -40,11 +40,13 @@ export default function HomePage({
       </Typography>
       <Paper>
         <List>
-          {data.map((article) => (
-            <ListItem key={article.id}>
-              <ListItemText primary={article.title} />
-            </ListItem>
-          ))}
+          {[...new Array(10)].map(() =>
+            data.map((article) => (
+              <ListItem key={article.id}>
+                <ListItemText primary={article.title} />
+              </ListItem>
+            ))
+          )}
         </List>
       </Paper>
     </>
