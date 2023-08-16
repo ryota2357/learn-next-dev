@@ -1,13 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import {
-  Button,
-  Container,
-  CssBaseline,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import ScrollHideAppBar from "@/components/ScrollHideAppBar";
+import RegisterApiTokenButton from "@/components/RegisterApiTokenButton";
 
 export const metadata: Metadata = {
   title: "タイトル",
@@ -33,7 +28,7 @@ export default function RootLayout({
             >
               タイトル
             </Typography>
-            <Button color="inherit">APIキー入力</Button>
+            <RegisterApiTokenButton color="inherit" />
           </Toolbar>
         </ScrollHideAppBar>
         <Container>{children}</Container>
