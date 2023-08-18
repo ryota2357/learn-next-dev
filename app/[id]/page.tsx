@@ -7,7 +7,7 @@ import useSWR from "swr";
 
 export default function IdPage({ params }: { params: { id: string } }) {
   // TODO: impl the behaviour of token == undefined
-  const [token, _] = useToken();
+  const [token] = useToken();
   const fetcher = (query: string) => getArticleDetail(token ?? "none", query);
 
   const { data, error, isLoading } = useSWR(params.id, fetcher);

@@ -13,12 +13,15 @@ export default function HomePage({
   searchParams: { query: string | undefined };
 }) {
   // TODO: impl the behaviour of token == undefined
-  const [token, _] = useToken();
-  const fetcher = (query: string) => getArticleIndex(token ?? "none", query);
+  const [token] = useToken();
+  const fetcher = (query: string | undefined) => {
+    if (!query) {
+      return Promise.resolve([] as ArticleIndex);
+    }
+    return getArticleIndex(token ?? "none", query);
+  };
 
-  const { data, error, isLoading } = searchParams.query
-    ? useSWR(searchParams.query, fetcher)
-    : { data: [] as ArticleIndex, error: undefined, isLoading: false };
+  const { data, error, isLoading } = useSWR(searchParams.query, fetcher);
 
   return (
     <Box display="flex" flexDirection="column" gap={2}>
@@ -39,7 +42,7 @@ export default function HomePage({
               </Typography>
             );
           }
-          return <ArticleList articleIndex={data!} />;
+          return <ArticleList articleIndex={data ?? []} />;
         })()}
       </Paper>
     </Box>
