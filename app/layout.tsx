@@ -36,6 +36,7 @@ export default function RootLayout({
           <Container
             sx={{
               mt: 9, // NOTE: Push down the content to avoid the app bar
+              mb: 2,
             }}
           >
             {children}
