@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 export type ArticleIndex = Array<{
   title: string;
@@ -39,12 +39,14 @@ export async function getArticleIndex(
       page: "1",
     }).toString();
 
-    return await axios.get<ArticleIndex>(`https://qiita.com/api/v2/items?${params}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => res.data);
+    return await axios
+      .get<ArticleIndex>(`https://qiita.com/api/v2/items?${params}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
   }
 
   // TODO: impl data fetch
@@ -93,12 +95,14 @@ export async function getArticleDetail(
   id: string | typeof dummyId,
 ): Promise<ArticleDetail> {
   if (id !== dummyId) {
-    return await axios.get<ArticleDetail>(`https://qiita.com/api/v2/items/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => res.data);
+    return await axios
+      .get<ArticleDetail>(`https://qiita.com/api/v2/items/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data);
   }
 
   // TODO: impl data fetch
