@@ -1,4 +1,4 @@
-// import axios from "axios"
+import axios from "axios"
 
 export type ArticleIndex = Array<{
   title: string;
@@ -26,17 +26,32 @@ export type ArticleDetail = {
   tags: Array<{ name: string }>;
 };
 
+export const dummyQuery = Symbol("DUMMY_QUERY");
+
 export async function getArticleIndex(
   token: string,
-  query: string,
+  query: string | typeof dummyQuery,
 ): Promise<ArticleIndex> {
-  console.log(`getArticleIndex: token = ${token}`);
+  if (query !== dummyQuery) {
+    const params = new URLSearchParams({
+      query: query,
+      per_page: "20",
+      page: "1",
+    }).toString();
+
+    return await axios.get<ArticleIndex>(`https://qiita.com/api/v2/items?${params}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.data);
+  }
 
   // TODO: impl data fetch
   await new Promise((resolve) => setTimeout(resolve, 1500));
   return [
     {
-      title: "title1" + query,
+      title: "title1" + token,
       created_at: "2023-01-23T12:34:56+09:00",
       id: "c686397e4a0f4f11683a",
       tags: [{ name: "tag1" }, { name: "tag2" }],
@@ -47,7 +62,7 @@ export async function getArticleIndex(
       },
     },
     {
-      title: "title2" + query,
+      title: "title2" + token,
       created_at: "2023-01-24T12:34:56+09:00",
       id: "c686397e4a0f4f11683b",
       tags: [{ name: "tag1" }, { name: "tag3" }],
@@ -58,7 +73,7 @@ export async function getArticleIndex(
       },
     },
     {
-      title: "title3" + query,
+      title: "title3" + token,
       created_at: "2023-01-25T12:34:56+09:00",
       id: "c686397e4a0f4f11683c",
       tags: [{ name: "tag1" }, { name: "tag4" }],
@@ -71,17 +86,26 @@ export async function getArticleIndex(
   ];
 }
 
+export const dummyId = Symbol("DUMMY_ID");
+
 export async function getArticleDetail(
   token: string,
-  id: string,
+  id: string | typeof dummyId,
 ): Promise<ArticleDetail> {
-  console.log(`getArticleDetail: token = ${token}`);
+  if (id !== dummyId) {
+    return await axios.get<ArticleDetail>(`https://qiita.com/api/v2/items/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.data);
+  }
 
   // TODO: impl data fetch
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   return {
-    title: "title1" + id,
+    title: "title1" + token,
     created_at: "2021-08-01T00:00:00.000Z",
     updated_at: "2021-08-01T00:00:00.000Z",
     url: "https://example.com",
