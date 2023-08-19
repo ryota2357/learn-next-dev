@@ -1,6 +1,14 @@
 "use client";
 
-import { Box, CircularProgress, Link, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import RegisterApiTokenButton from "@/components/RegisterApiTokenButton";
 import BrowserBackButton from "@/components/BrowserBackButton";
 import { getArticleDetail } from "@/lib/article";
@@ -18,7 +26,34 @@ export default function IdPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <BrowserBackButton variant="contained" sx={{ mb: 2 }} />
+      <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
+        <BrowserBackButton variant="contained" sx={{ mb: 2 }} />
+        {(() => {
+          if (data) {
+            return (
+              <Typography display="inline-flex" alignItems="center">
+                Qiita で開く:
+                {(() => {
+                  const url = `https://qiita.com/${data?.user.id}/items/${params.id}`;
+                  return (
+                    <Link
+                      href={url}
+                      target="_blank"
+                      sx={{ overflowWrap: "anywhere" }}
+                    >
+                      {url}
+                      <OpenInNewIcon
+                        fontSize="small"
+                        sx={{ ml: 1, verticalAlign: "text-top" }}
+                      />
+                    </Link>
+                  );
+                })()}
+              </Typography>
+            );
+          }
+        })()}
+      </Stack>
       <Paper>
         {(() => {
           if (!data && !error && !isLoading) {
@@ -60,7 +95,7 @@ export default function IdPage({ params }: { params: { id: string } }) {
           return (
             <Box
               p={2}
-              dangerouslySetInnerHTML={{ __html: data!.rendered_body }}
+              dangerouslySetInnerHTML={{ __html: data?.rendered_body ?? "" }}
             />
           );
         })()}
