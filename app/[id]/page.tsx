@@ -21,7 +21,7 @@ export default function IdPage({ params }: { params: { id: string } }) {
   // NOTE: Conditional Fetching
   // If pass null as 1st argument, useSWR will not start the request.
   const { data, error, isLoading } = useSWR(token ? params.id : null, (id) =>
-    getArticleDetail(token!, id)
+    getArticleDetail(token!, id),
   );
 
   return (

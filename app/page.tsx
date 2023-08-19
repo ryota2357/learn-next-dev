@@ -19,7 +19,7 @@ export default function HomePage({
   // If pass null as 1st argument, useSWR will not start the request.
   const { data, error, isLoading } = useSWR(
     searchParams.query && token ? searchParams.query : null,
-    (query: string) => getArticleIndex(token!, query)
+    (query: string) => getArticleIndex(token!, query),
   );
 
   return (
