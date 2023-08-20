@@ -90,9 +90,17 @@ export default function IdPage({ params }: { params: { id: string } }) {
           }
           if (error) {
             return (
-              <Typography variant="h1" component="h1">
-                Error: {error.toString()}
-              </Typography>
+              <Box p={2}>
+                <Typography variant="h5" component="h2">
+                  エラーが発生しました。
+                </Typography>
+                <Typography>
+                  設定したAPIトークンまたはネットワーク接続を確認してください。
+                </Typography>
+                <Typography variant="body2" mt={2}>
+                  エラー: {error.toString()}
+                </Typography>
+              </Box>
             );
           }
           return (
