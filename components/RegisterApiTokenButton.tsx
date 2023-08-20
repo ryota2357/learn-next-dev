@@ -32,10 +32,10 @@ export default function RegisterApiTokenButton({ variant, color, sx }: Props) {
         sx={sx}
         onClick={() => setDialogOpen(true)}
       >
-        API キー入力
+        API トークン入力
       </Button>
       <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <DialogTitle>APIキー入力</DialogTitle>
+        <DialogTitle>APIトークン入力</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Qiita API のアクセストークンを入力してください。

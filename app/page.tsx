@@ -36,7 +36,10 @@ export default function HomePage({
                   Qiita API のアクセストークンが設定されていません。
                 </Typography>
                 <Typography>
-                  <Link href="https://qiita.com/settings/applications">
+                  <Link
+                    href="https://qiita.com/settings/applications"
+                    target="_blank"
+                  >
                     Qiita.com のアプリケーション設定
                   </Link>{" "}
                   からアクセストークンを取得し、設定してください。
