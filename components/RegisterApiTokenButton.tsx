@@ -11,7 +11,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import { useToken } from "@/context/TokenProvider";
+import { useToken } from "@/state/token";
 
 type Props = {
   variant?: ButtonProps["variant"];

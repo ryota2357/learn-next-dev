@@ -12,7 +12,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import RegisterApiTokenButton from "@/components/RegisterApiTokenButton";
 import BrowserBackButton from "@/components/BrowserBackButton";
 import { getArticleDetail } from "@/lib/article";
-import { useToken } from "@/context/TokenProvider";
+import { useToken } from "@/state/token";
 import useSWR from "swr";
 
 export default function IdPage({ params }: { params: { id: string } }) {

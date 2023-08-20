@@ -4,7 +4,7 @@ import { Box, CircularProgress, Link, Paper, Typography } from "@mui/material";
 import { getArticleIndex } from "@/lib/article";
 import SearchBar from "@/components/SearchBar";
 import ArticleList from "@/components/ArticleList";
-import { useToken } from "@/context/TokenProvider";
+import { useToken } from "@/state/token";
 import useSWR from "swr";
 import RegisterApiTokenButton from "@/components/RegisterApiTokenButton";
 

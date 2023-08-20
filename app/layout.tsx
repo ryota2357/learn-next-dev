@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import ScrollHideAppBar from "@/components/ScrollHideAppBar";
 import RegisterApiTokenButton from "@/components/RegisterApiTokenButton";
-import { TokenProvider } from "@/context/TokenProvider";
+import RecoilRootProvider from "@/components/RecoilRootProvider";
 
 export const metadata: Metadata = {
   title: "タイトル",
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="jp">
       <CssBaseline />
       <body>
-        <TokenProvider>
+        <RecoilRootProvider>
           <ScrollHideAppBar>
             <Toolbar>
               <Typography
@@ -41,7 +41,7 @@ export default function RootLayout({
           >
             {children}
           </Container>
-        </TokenProvider>
+        </RecoilRootProvider>
       </body>
     </html>
   );
